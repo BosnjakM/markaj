@@ -11,7 +11,7 @@ export function Team() {
         <div className="team-grid">
           {team.map((person) => (
             <article className="team-card" key={person.name}>
-              <img src={person.image} alt={`${person.name} Garage Markaj AG`} />
+              <img src={person.image} alt={`${person.name} Garage Markaj AG`} loading="lazy" />
               <div>
                 <h3>{person.name}</h3>
                 <span>{person.role}</span>

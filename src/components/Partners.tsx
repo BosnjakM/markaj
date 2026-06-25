@@ -11,7 +11,7 @@ export function Partners() {
         <div className="partner-grid">
           {partners.map((partner, index) => (
             <div className="partner-logo" key={`${partner.name}-${index}`}>
-              <img src={partner.image} alt={partner.name} />
+              <img src={partner.image} alt={partner.name} loading="lazy" />
             </div>
           ))}
         </div>

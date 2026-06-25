@@ -19,7 +19,9 @@ export function Header() {
       </div>
       <nav className="navbar" aria-label="Hauptnavigation">
         <a className="brand" href="#home" aria-label="Garage Markaj AG Startseite">
-          <img src={images.logo} alt="Garage Markaj AG Logo" />
+          <span className="brand-mark">
+            <img src={images.logo} alt="Garage Markaj AG Logo" />
+          </span>
           <span>Garage Markaj AG</span>
         </a>
         <button className="nav-toggle" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Navigation öffnen">
@@ -31,6 +33,9 @@ export function Header() {
               {item.label}
             </a>
           ))}
+          <a className="nav-cta" href="#kontakt" onClick={() => setOpen(false)}>
+            Termin vereinbaren
+          </a>
         </div>
       </nav>
     </header>

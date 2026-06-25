@@ -1,4 +1,6 @@
 import { About } from "./components/About";
+import { AccidentHighlight } from "./components/AccidentHighlight";
+import { CarwashSection } from "./components/CarwashSection";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Gallery } from "./components/Gallery";
@@ -7,6 +9,7 @@ import { Hero } from "./components/Hero";
 import { Partners } from "./components/Partners";
 import { Services } from "./components/Services";
 import { Team } from "./components/Team";
+import { TrustStrip } from "./components/TrustStrip";
 import { UsedCars } from "./components/UsedCars";
 
 export default function App() {
@@ -15,9 +18,12 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <TrustStrip />
         <Services />
         <UsedCars />
+        <AccidentHighlight />
         <About />
+        <CarwashSection />
         <Team />
         <Partners />
         <Gallery />

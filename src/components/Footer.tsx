@@ -5,11 +5,13 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer-grid">
         <div>
-          <img src={images.logo} alt="Garage Markaj AG Logo" className="footer-logo" />
+          <span className="footer-logo-wrap">
+            <img src={images.logo} alt="Garage Markaj AG Logo" className="footer-logo" />
+          </span>
           <h2>Garage Markaj AG</h2>
           <p>{contact.address}</p>
           <p>Tel: {contact.phone}</p>
-          <p>E-Mail: {contact.email}</p>
+          <p>{contact.email}</p>
         </div>
         <div>
           <h3>Sitemap</h3>
@@ -31,7 +33,7 @@ export function Footer() {
       <div className="container footer-bottom">
         <span>© Garage Markaj AG. All rights reserved.</span>
         <div>
-          <a href="#agb">AGB's</a>
+          <a href="#agb">AGB</a>
           <a href="#datenschutz">Datenschutzerklärung</a>
           <a href="#impressum">Impressum</a>
         </div>
