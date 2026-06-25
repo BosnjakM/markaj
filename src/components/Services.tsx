@@ -11,10 +11,10 @@ export function Services() {
         </div>
 
         <div className="service-grid">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <article className="service-card reveal" id={service.id} key={service.title}>
+              <article className="service-card reveal" id={service.id} style={{ animationDelay: `${index * 70}ms` }} key={service.title}>
                 <div className="service-image">
                   <img src={service.image} alt={`${service.title} Garage Markaj AG`} loading="lazy" />
                 </div>

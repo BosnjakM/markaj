@@ -43,6 +43,11 @@ export function Contact() {
               <span key={hour}>{hour}</span>
             ))}
           </div>
+          <div className="location-card" aria-label="Standort Uznach">
+            <span>Zürcherstrasse</span>
+            <strong>Garage Markaj AG</strong>
+            <small>8730 Uznach</small>
+          </div>
         </aside>
       </div>
     </section>

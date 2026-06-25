@@ -1,5 +1,6 @@
 import { About } from "./components/About";
 import { AccidentHighlight } from "./components/AccidentHighlight";
+import { AutoHub } from "./components/AutoHub";
 import { CarwashSection } from "./components/CarwashSection";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -20,6 +21,7 @@ export default function App() {
         <Hero />
         <TrustStrip />
         <Services />
+        <AutoHub />
         <UsedCars />
         <AccidentHighlight />
         <About />

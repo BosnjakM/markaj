@@ -64,7 +64,7 @@ export type Service = {
   icon: LucideIcon;
 };
 
-export const trustBadges = ["Alle Marken", "In Uznach", "Service & Reparatur", "Occasion & Neuwagen"];
+export const trustBadges = ["Alle Marken", "In Uznach", "Service & Reparatur", "Carrosserie & Lackierung", "Occasion & Neuwagen"];
 
 export const trustPoints = [
   { title: "Alle Marken", text: "Service, Diagnose und Reparaturen für Fahrzeuge vieler Hersteller.", icon: CarFront },
@@ -76,10 +76,17 @@ export const trustPoints = [
 export const services: Service[] = [
   {
     id: "autowerkstatt",
-    title: "Werkstattservice",
+    title: "Autowerkstatt",
     text: "Wartung, Diagnose und Reparaturen werden sauber geplant und zuverlässig ausgeführt.",
     image: images.inspection,
     icon: Wrench,
+  },
+  {
+    id: "wartung",
+    title: "Service & Wartung",
+    text: "Regelmässige Pflege nach Vorgabe, damit Ihr Auto zuverlässig bleibt.",
+    image: images.service,
+    icon: ClipboardCheck,
   },
   {
     id: "carrosserie",
@@ -110,20 +117,6 @@ export const services: Service[] = [
     icon: Gauge,
   },
   {
-    id: "wartung",
-    title: "Inspektion / Wartung",
-    text: "Regelmässige Pflege nach Vorgabe, damit Ihr Auto zuverlässig bleibt.",
-    image: images.service,
-    icon: ClipboardCheck,
-  },
-  {
-    id: "unfall",
-    title: "Unfall-Reparaturen",
-    text: "Wir koordinieren Reparatur, Versicherung und Ersatzwagen möglichst unkompliziert.",
-    image: images.accident,
-    icon: ShieldCheck,
-  },
-  {
     id: "carwash",
     title: "Carwash",
     text: "Schonende Fahrzeugreinigung für gepflegten Glanz innen und aussen.",
@@ -145,6 +138,8 @@ export const processSteps = [
   { title: "Reparatur", text: "Die Arbeit wird sauber, termintreu und transparent ausgeführt." },
   { title: "Übergabe", text: "Sie erhalten Ihr Fahrzeug bereit, kontrolliert und verständlich erklärt zurück." },
 ];
+
+export const hubBenefits = ["Persönliche Beratung", "Faire Konditionen", "Saubere Ausführung", "Kurze Wege in Uznach"];
 
 export const whyItems = [
   "Persönliche Beratung durch ein eingespieltes Team",
@@ -207,3 +202,4 @@ export const stats = [
 
 export const PhoneIcon = Phone;
 export const SparklesIcon = Sparkles;
+export const ShieldIcon = ShieldCheck;

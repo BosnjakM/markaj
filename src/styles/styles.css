@@ -249,48 +249,60 @@ button {
 
 .hero {
   position: relative;
-  min-height: 760px;
   overflow: hidden;
-  display: grid;
-  align-items: center;
-  background: #fff;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(215, 25, 32, 0.12), transparent 30%),
+    linear-gradient(135deg, #fff 0%, #f8fafc 48%, #fbf1e4 100%);
 }
 
-.hero-media,
-.hero-overlay {
+.hero-background {
   position: absolute;
   inset: 0;
-}
-
-.hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.04);
-  animation: heroZoom 1600ms ease-out both;
-}
-
-.hero-overlay {
+  pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.54)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(251, 241, 228, 0.82));
+    linear-gradient(90deg, rgba(23, 32, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(90deg, #000, transparent 76%);
+}
+
+.hero-line {
+  position: absolute;
+  right: -8vw;
+  width: 48vw;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(215, 25, 32, 0.45), transparent);
+  transform: rotate(-15deg);
+}
+
+.hero-line-one {
+  top: 26%;
+  animation: serviceLine 2600ms ease-in-out infinite;
+}
+
+.hero-line-two {
+  top: 64%;
+  animation: serviceLine 3100ms ease-in-out 420ms infinite;
 }
 
 .hero-content {
   position: relative;
-  padding: 110px 0 80px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  gap: 58px;
+  align-items: center;
+  padding: 104px 0 34px;
 }
 
 .hero-copy {
-  max-width: 800px;
+  max-width: 720px;
   animation: fadeUp 760ms ease 120ms both;
 }
 
 .hero-copy h1 {
   margin: 0;
   color: #121923;
-  font-size: clamp(2.65rem, 6vw, 5.65rem);
+  font-size: clamp(3rem, 6.5vw, 6.4rem);
   line-height: 1;
   letter-spacing: 0;
 }
@@ -316,10 +328,10 @@ button {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 30px;
-  animation: fadeUp 760ms ease 360ms both;
 }
 
 .hero-pills span {
+  opacity: 0;
   padding: 10px 13px;
   border: 1px solid rgba(215, 25, 32, 0.18);
   border-radius: 999px;
@@ -327,6 +339,173 @@ button {
   background: rgba(255, 255, 255, 0.74);
   box-shadow: 0 8px 24px rgba(26, 35, 47, 0.08);
   font-weight: 850;
+  animation: badgePop 520ms ease both;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 560px;
+  animation: visualIn 850ms ease 220ms both;
+}
+
+.visual-card {
+  position: absolute;
+  inset: 24px 0 42px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 30px 80px rgba(26, 35, 47, 0.18);
+  transform: perspective(1200px) rotateY(-5deg) rotateX(2deg);
+}
+
+.visual-card::before {
+  content: "";
+  position: absolute;
+  inset: 24px -18px -18px 34px;
+  z-index: -1;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(215, 25, 32, 0.18), rgba(23, 32, 42, 0.08));
+}
+
+.visual-image {
+  position: absolute;
+  inset: 20px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #dfe4ea;
+}
+
+.visual-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: heroZoom 9000ms ease-in-out infinite alternate;
+}
+
+.light-sweep {
+  position: absolute;
+  inset: -30% auto -30% -45%;
+  width: 35%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  animation: lightSweep 3600ms ease-in-out 900ms infinite;
+}
+
+.visual-metric,
+.appointment-card {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 44px rgba(26, 35, 47, 0.14);
+}
+
+.visual-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  color: #263445;
+  font-weight: 900;
+}
+
+.visual-metric svg,
+.appointment-card svg {
+  color: var(--brand);
+}
+
+.visual-metric-top {
+  top: 58px;
+  left: 2px;
+  animation: floatCard 5200ms ease-in-out infinite;
+}
+
+.visual-metric-bottom {
+  right: -8px;
+  bottom: 82px;
+  animation: floatCard 5600ms ease-in-out 420ms infinite;
+}
+
+.appointment-card {
+  right: 22px;
+  bottom: 0;
+  width: min(310px, calc(100% - 54px));
+  padding: 18px;
+}
+
+.appointment-card div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  font-weight: 950;
+}
+
+.appointment-card p {
+  margin: 10px 0 14px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.appointment-card a {
+  display: inline-flex;
+  padding: 10px 13px;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 900;
+}
+
+.hero-process {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 34px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 42px rgba(26, 35, 47, 0.09);
+}
+
+.hero-process::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--brand), #f6b6ba, var(--brand));
+  transform: translateX(-100%);
+  animation: processDraw 1500ms ease 620ms both;
+}
+
+.hero-process-step {
+  position: relative;
+  opacity: 0;
+  padding: 18px 18px 18px 44px;
+  color: #334155;
+  font-weight: 900;
+  animation: fadeUp 540ms ease both;
+}
+
+.hero-process-step:not(:last-child) {
+  border-right: 1px solid var(--line);
+}
+
+.hero-process-step::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--brand);
+  transform: translateY(-50%);
 }
 
 .trust-strip {
@@ -378,14 +557,14 @@ button {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
 
 .service-card {
   position: relative;
   overflow: hidden;
-  min-height: 390px;
+  min-height: 372px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #fff;
@@ -433,7 +612,7 @@ button {
 
 .service-body {
   display: grid;
-  min-height: 212px;
+  min-height: 194px;
   grid-template-rows: auto auto 1fr auto;
   padding: 22px;
 }
@@ -551,7 +730,8 @@ button {
 }
 
 .check-list,
-.why-list {
+.why-list,
+.hub-list {
   display: grid;
   gap: 12px;
   padding: 0;
@@ -560,12 +740,26 @@ button {
 }
 
 .check-list li,
-.why-list li {
+.why-list li,
+.hub-list li {
   display: flex;
   gap: 10px;
   align-items: flex-start;
   color: #334155;
   line-height: 1.5;
+}
+
+.hub-list {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hub-list svg {
+  color: var(--brand);
+  flex: 0 0 auto;
+}
+
+.auto-hub {
+  background: linear-gradient(180deg, #fff, var(--surface-soft));
 }
 
 .stats-grid {
@@ -755,6 +949,67 @@ button {
   color: var(--ink);
 }
 
+.location-card {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  margin-top: 24px;
+  min-height: 150px;
+  padding: 22px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(90deg, rgba(23, 32, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(23, 32, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #f8fafc, #fff2f2);
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.location-card::before {
+  content: "";
+  position: absolute;
+  left: 34%;
+  top: -10%;
+  width: 4px;
+  height: 130%;
+  transform: rotate(28deg);
+  background: rgba(215, 25, 32, 0.34);
+}
+
+.location-card::after {
+  content: "";
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  width: 18px;
+  height: 18px;
+  border: 5px solid var(--brand);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 10px rgba(215, 25, 32, 0.12);
+}
+
+.location-card span,
+.location-card strong,
+.location-card small {
+  position: relative;
+  z-index: 1;
+}
+
+.location-card span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.location-card strong {
+  font-size: 1.2rem;
+}
+
+.location-card small {
+  color: var(--brand);
+  font-weight: 900;
+}
+
 .footer {
   padding: 58px 0 24px;
   background: #111923;
@@ -812,7 +1067,68 @@ button {
     transform: scale(1);
   }
   to {
-    transform: scale(1.04);
+    transform: scale(1.055);
+  }
+}
+
+@keyframes visualIn {
+  from {
+    opacity: 0;
+    transform: translateX(38px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes badgePop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lightSweep {
+  0%,
+  38% {
+    left: -45%;
+  }
+  74%,
+  100% {
+    left: 112%;
+  }
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes processDraw {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes serviceLine {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateX(0) rotate(-15deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-32px) rotate(-15deg);
   }
 }
 
@@ -870,6 +1186,7 @@ button {
   }
 
   .service-flow,
+  .hero-process,
   .stats-grid,
   .partner-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -877,6 +1194,15 @@ button {
 
   .flow-step:not(:last-child)::after {
     display: none;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .hero-visual {
+    min-height: 500px;
   }
 }
 
@@ -901,7 +1227,7 @@ button {
   }
 
   .hero-content {
-    padding: 74px 0 56px;
+    padding: 64px 0 26px;
   }
 
   .hero-copy h1 {
@@ -919,6 +1245,7 @@ button {
   .trust-grid,
   .service-grid,
   .service-flow,
+  .hero-process,
   .team-grid,
   .partner-grid,
   .gallery-grid,
@@ -933,6 +1260,52 @@ button {
 
   .service-card {
     min-height: auto;
+  }
+
+  .hero-visual {
+    min-height: 430px;
+  }
+
+  .visual-card {
+    inset: 12px 0 56px;
+    transform: none;
+  }
+
+  .visual-metric {
+    font-size: 0.86rem;
+  }
+
+  .visual-metric-top {
+    top: 30px;
+    left: 10px;
+  }
+
+  .visual-metric-bottom {
+    right: 10px;
+    bottom: 96px;
+  }
+
+  .appointment-card {
+    right: 12px;
+    bottom: 0;
+    width: calc(100% - 24px);
+  }
+
+  .hero-process {
+    margin-bottom: 24px;
+  }
+
+  .hero-process-step {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-process-step:last-child {
+    border-bottom: 0;
+  }
+
+  .hub-list {
+    grid-template-columns: 1fr;
   }
 
   .feature-image img,
