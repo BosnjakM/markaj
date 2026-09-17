@@ -1,9 +1,9 @@
 :root {
   color-scheme: light;
-  --bg: #f7f4ef;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-soft: #f2f5f7;
-  --warm: #fbf1e4;
+  --surface-soft: #f5f7f9;
+  --warm: #f7fafc;
   --ink: #17202a;
   --muted: #637083;
   --line: #dfe4ea;
@@ -28,11 +28,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background:
-    linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(23, 32, 42, 0.025) 1px, transparent 1px),
-    var(--bg);
-  background-size: 56px 56px;
+  background: var(--bg);
   color: var(--ink);
 }
 
@@ -177,7 +173,17 @@ button {
   font-weight: 950;
 }
 
-.brand-mark,
+.brand-logo {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.03);
+}
+
 .footer-logo-wrap {
   display: grid;
   place-items: center;
@@ -187,7 +193,6 @@ button {
   background: #121923;
 }
 
-.brand img,
 .footer-logo {
   width: 52px;
   height: auto;
@@ -250,9 +255,11 @@ button {
 .hero {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 78% 20%, rgba(215, 25, 32, 0.12), transparent 30%),
-    linear-gradient(135deg, #fff 0%, #f8fafc 48%, #fbf1e4 100%);
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  background: #0a0e14;
 }
 
 .hero-background {
@@ -1218,8 +1225,8 @@ button {
     gap: 6px;
   }
 
-  .brand span:last-child {
-    max-width: 160px;
+  .brand-logo {
+    height: 42px;
   }
 
   .hero {
@@ -1320,5 +1327,342 @@ button {
 
   .footer-bottom {
     flex-direction: column;
+  }
+}
+
+/* ============================================================
+   CINEMATIC DRONE HERO SLIDER
+   ============================================================ */
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: #05070b;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1400ms ease;
+  will-change: opacity;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+.hero-slide.is-active img {
+  animation: heroKenBurns 7200ms ease-out both;
+}
+
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.16) translate3d(-2%, -1.5%, 0);
+  }
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(6, 9, 14, 0.9) 0%, rgba(6, 9, 14, 0.55) 42%, rgba(6, 9, 14, 0.15) 72%, rgba(6, 9, 14, 0.45) 100%),
+    linear-gradient(0deg, rgba(6, 9, 14, 0.85) 0%, rgba(6, 9, 14, 0.05) 40%),
+    radial-gradient(circle at 82% 18%, rgba(215, 25, 32, 0.28), transparent 45%);
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* --- Copy over slider --- */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 120px 0 130px;
+}
+
+.hero-copy {
+  max-width: 760px;
+  animation: heroCopyIn 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-copy .hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 8px 16px 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-kicker-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--brand);
+  box-shadow: 0 0 0 0 rgba(215, 25, 32, 0.6);
+  animation: heroPulse 2200ms ease-out infinite;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.8rem, 6.6vw, 6.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hero-copy .hero-sub {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  line-height: 1.6;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-inner .hero-actions {
+  margin-top: 34px;
+  animation: none;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-inner .hero-pills {
+  margin-top: 32px;
+}
+
+.hero-inner .hero-pills span {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+/* --- Controls (arrows + dots) --- */
+.hero-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 42px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-content: flex-start;
+}
+
+.hero-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 200ms ease, transform 200ms ease, border-color 200ms ease;
+}
+
+.hero-arrow:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  transform: scale(1.06);
+}
+
+.hero-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.hero-dot {
+  position: relative;
+  width: 42px;
+  height: 5px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  overflow: hidden;
+  transition: width 300ms ease;
+}
+
+.hero-dot.is-active {
+  width: 68px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.hero-dot-fill {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  border-radius: 999px;
+  background: var(--brand);
+}
+
+.hero-dot.is-active .hero-dot-fill {
+  animation: heroDotFill 6000ms linear both;
+}
+
+@keyframes heroDotFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* --- Scroll cue --- */
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: none;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+}
+
+.hero-scroll span {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 999px;
+  background: #fff;
+  animation: heroScroll 1800ms ease-in-out infinite;
+}
+
+@keyframes heroScroll {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes heroCopyIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroPulse {
+  0% { box-shadow: 0 0 0 0 rgba(215, 25, 32, 0.55); }
+  70% { box-shadow: 0 0 0 12px rgba(215, 25, 32, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(215, 25, 32, 0); }
+}
+
+/* --- Responsive overrides (win over earlier mobile rules) --- */
+@media (min-width: 900px) {
+  .hero-scroll { display: block; }
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    padding: 96px 0 118px;
+  }
+  .hero-scrim {
+    background:
+      linear-gradient(0deg, rgba(6, 9, 14, 0.92) 0%, rgba(6, 9, 14, 0.2) 55%, rgba(6, 9, 14, 0.55) 100%),
+      radial-gradient(circle at 80% 12%, rgba(215, 25, 32, 0.3), transparent 50%);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    min-height: 100svh;
+  }
+  .hero-inner {
+    padding: 90px 0 120px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+  .hero-copy .hero-sub {
+    font-size: 1.02rem;
+  }
+  .hero-controls {
+    gap: 12px;
+    bottom: 30px;
+  }
+  .hero-arrow {
+    width: 42px;
+    height: 42px;
+  }
+  .hero-dot {
+    width: 26px;
+  }
+  .hero-dot.is-active {
+    width: 46px;
+  }
+  .hero-inner .btn {
+    width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active img,
+  .hero-dot.is-active .hero-dot-fill,
+  .hero-kicker-dot,
+  .hero-scroll span {
+    animation: none;
+  }
+  .hero-slide {
+    transition: opacity 300ms ease;
   }
 }

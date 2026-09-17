@@ -37,10 +37,12 @@ export const navItems = [
 
 export const images = {
   logo: "/images/garage-markaj/Logo-Garage-Markaj-Weiss.png",
+  logoDark: "/images/garage-markaj/Logo-Garage-Markaj-Dunkel.png",
   hero: "/images/garage-markaj/garage-markaj-startseite-optimized.webp",
   service: "/images/garage-markaj/Markaj-027-optimized.webp",
   family: "/images/garage-markaj/familie_markajv1-optimized.webp",
   about: "/images/garage-markaj/werkstatt.png",
+  electrics: "/images/garage-markaj/fahrzeugelektrik-optimized.webp",
   teamAgim: "/images/garage-markaj/Agim-optimized.webp",
   teamTatjana: "/images/garage-markaj/Tatjana-optimized.webp",
   teamVigan: "/images/garage-markaj/Vigan-optimized.webp",
@@ -55,6 +57,53 @@ export const images = {
   wash: "/images/garage-markaj/waschanlage1-optimized.webp",
   rims: "/images/garage-markaj/felgen_reparatur-optimized.webp",
 };
+
+export type HeroSlide = {
+  image: string;
+  kicker: string;
+  title: string;
+  subtitle: string;
+};
+
+// Cinematic drone shots (optimized from originals in /fotos)
+export const heroSlides: HeroSlide[] = [
+  {
+    image: "/images/hero-drone/164701_0190.webp",
+    kicker: "Ihr Partner für Autoservice, Reparaturen & Fahrzeughandel in Uznach",
+    title: "Garage Markaj AG – Ihre Autowerkstatt in Uznach",
+    subtitle: "Wir betreuen Fahrzeuge verschiedener Marken und stehen Kunden aus Uznach, Rapperswil-Jona und dem gesamten Linthgebiet mit persönlicher Beratung und fachgerechtem Service zur Seite.",
+  },
+  {
+    image: "/images/hero-drone/164605_0187.webp",
+    kicker: "Autowerkstatt",
+    title: "Ihre Autowerkstatt in Uznach",
+    subtitle: "Markenunabhängiger Autoservice, Reparaturen & MFK-Vorbereitung.",
+  },
+  {
+    image: "/images/hero-drone/164713_0192.webp",
+    kicker: "Carrosserie",
+    title: "Carrosserie in Uznach",
+    subtitle: "Unfallreparaturen, Hagelschäden & professionelle Instandsetzung.",
+  },
+  {
+    image: "/images/hero-drone/163805_0167.webp",
+    kicker: "Spritzwerk",
+    title: "Spritzwerk in Uznach",
+    subtitle: "Fahrzeuglackierung, Spot-Repair & professionelle Lackreparaturen.",
+  },
+  {
+    image: "/images/hero-drone/164529_0184.webp",
+    kicker: "Occasion & Neuwagen",
+    title: "Occasionen und Gebrauchtwagen in Uznach kaufen",
+    subtitle: "Geprüfte Fahrzeuge inklusive Beratung, Eintausch und Finanzierung.",
+  },
+  {
+    image: "/images/hero-drone/164101_0176.webp",
+    kicker: "Carwash",
+    title: "Carwash in Uznach",
+    subtitle: "Fahrzeugreinigung, Innenpflege & professionelle Autoaufbereitung.",
+  },
+];
 
 export type Service = {
   id: string;
@@ -181,16 +230,16 @@ export const partners = [
   { name: "Auto Heuberger", image: "/images/garage-markaj/partner8.png" },
 ];
 
-export const galleryImages = [
-  images.hero,
-  images.service,
-  images.family,
-  images.inspection,
-  images.paint,
-  images.accident,
-  images.wash,
-  images.rims,
-  images.cars,
+export const galleryItems = [
+  { src: "/images/hero-drone/164709_0191.webp", label: "Garage Markaj AG aus der Luft" },
+  { src: "/images/hero-drone/164642_0189.webp", label: "Unser Standort an der Zürcherstrasse" },
+  { src: images.service, label: "Service & Wartung" },
+  { src: "/images/hero-drone/163740_0166.webp", label: "Solarenergie vom eigenen Dach" },
+  { src: images.paint, label: "Spritzwerk & Lackierung" },
+  { src: images.accident, label: "Carrosserie" },
+  { src: "/images/hero-drone/164545_0186.webp", label: "Occasionen vor Ort" },
+  { src: images.rims, label: "Felgenreparatur" },
+  { src: images.family, label: "Familie Markaj" },
 ];
 
 export const stats = [

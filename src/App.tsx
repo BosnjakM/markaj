@@ -1,35 +1,53 @@
-import { About } from "./components/About";
-import { AccidentHighlight } from "./components/AccidentHighlight";
-import { AutoHub } from "./components/AutoHub";
-import { CarwashSection } from "./components/CarwashSection";
-import { Contact } from "./components/Contact";
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./components/Footer";
-import { Gallery } from "./components/Gallery";
 import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { Partners } from "./components/Partners";
-import { Services } from "./components/Services";
-import { Team } from "./components/Team";
-import { TrustStrip } from "./components/TrustStrip";
-import { UsedCars } from "./components/UsedCars";
+import { legalPages, servicePages } from "./data/pages";
+import { useReveal } from "./hooks/useReveal";
+import { Home } from "./pages/Home";
+import { Kontakt } from "./pages/Kontakt";
+import { Legal } from "./pages/Legal";
+import { Occasionen } from "./pages/Occasionen";
+import { ServicePage } from "./pages/ServicePage";
+import { UeberUns } from "./pages/UeberUns";
+
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [pathname, hash]);
+  return null;
+}
 
 export default function App() {
+  const { pathname } = useLocation();
+  useReveal(pathname);
+
   return (
     <>
+      <ScrollManager />
       <Header />
       <main>
-        <Hero />
-        <TrustStrip />
-        <Services />
-        <AutoHub />
-        <UsedCars />
-        <AccidentHighlight />
-        <About />
-        <CarwashSection />
-        <Team />
-        <Partners />
-        <Gallery />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ueber-uns" element={<UeberUns />} />
+          {servicePages.map((page) => (
+            <Route key={page.slug} path={`/${page.slug}`} element={<ServicePage data={page} />} />
+          ))}
+          <Route path="/occasionen" element={<Occasionen />} />
+          <Route path="/kontakt" element={<Kontakt />} />
+          {legalPages.map((page) => (
+            <Route key={page.slug} path={`/${page.slug}`} element={<Legal data={page} />} />
+          ))}
+          <Route path="*" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
     </>

@@ -1,0 +1,1014 @@
+/* ============================================================
+   GARAGE MARKAJ — DESIGN LAYER (industrial / automotive)
+   Barlow Condensed for titles, Barlow for text.
+   White base · logo blue #014b92 · logo red · hard edges · flat.
+   Loaded after styles.css, so equal-specificity rules here win.
+   ============================================================ */
+:root {
+  --blue: #014b92;
+  --blue-dark: #023a72;
+  --blue-soft: #edf3fa;
+  --red: #e60012;
+  --red-dark: #b8000e;
+  --red-soft: #fdeff0;
+  --brand: var(--red);
+  --brand-dark: var(--red-dark);
+  --ink: #111418;
+  --muted: #5c6470;
+  --line: #e3e6ea;
+  --line-strong: #c9ced5;
+  --radius: 3px;
+  --shadow: none;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Segoe UI", sans-serif;
+  font-family: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.stat strong,
+.flow-step span,
+.hero-copy h1 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+/* --- Signature "//" stripes (from the logo) --- */
+.stripes,
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+  flex: 0 0 auto;
+  background: linear-gradient(110deg, var(--blue) 0 44%, transparent 44% 56%, var(--red) 56% 100%);
+  clip-path: polygon(28% 0, 100% 0, 72% 100%, 0 100%);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* --- Scroll reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: none;
+  transition: opacity 640ms var(--ease), transform 640ms var(--ease);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Header --- */
+.site-header {
+  background: #fff;
+  backdrop-filter: none;
+  box-shadow: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue) 0 50%, var(--red) 50% 100%);
+}
+
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.topbar a:hover {
+  color: var(--blue);
+}
+
+.navbar {
+  min-height: 84px;
+}
+
+.nav-links {
+  gap: 26px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links a:not(.nav-cta) {
+  color: var(--ink);
+}
+
+.nav-links a:not(.nav-cta)::after {
+  bottom: -6px;
+  background: var(--red);
+}
+
+.nav-cta {
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  background: var(--red);
+  box-shadow: none;
+}
+
+.nav-cta:hover {
+  background: var(--red-dark);
+}
+
+.nav-toggle {
+  border-radius: var(--radius);
+}
+
+/* --- Buttons: square, condensed, no glow --- */
+.btn {
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+
+.btn:hover {
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--red);
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background: var(--red-dark);
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: #fff;
+  border-color: var(--ink);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: none;
+}
+
+/* --- Headings --- */
+.section-heading {
+  margin-bottom: 44px;
+}
+
+.section-heading h2,
+.feature-copy h2,
+.about-copy h2,
+.contact-copy h2,
+.carwash-card h2 {
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+.section-heading p:last-child,
+.feature-copy p,
+.about-copy p,
+.contact-copy p,
+.carwash-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* --- Hero: no glass, no glow --- */
+.hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(8, 10, 14, 0.86) 0%, rgba(8, 10, 14, 0.5) 45%, rgba(8, 10, 14, 0.12) 75%, rgba(8, 10, 14, 0.3) 100%),
+    linear-gradient(0deg, rgba(8, 10, 14, 0.8) 0%, rgba(8, 10, 14, 0) 45%);
+}
+
+.hero-grain {
+  display: none;
+}
+
+.hero-copy .hero-kicker {
+  gap: 14px;
+  margin: 0 0 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  backdrop-filter: none;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.hero-kicker-dot {
+  width: 22px;
+  height: 12px;
+  border-radius: 0;
+  background: linear-gradient(110deg, var(--blue) 0 44%, transparent 44% 56%, var(--red) 56% 100%);
+  clip-path: polygon(28% 0, 100% 0, 72% 100%, 0 100%);
+  box-shadow: none;
+  animation: none;
+}
+
+.hero-copy h1 {
+  font-size: clamp(3.4rem, 8.4vw, 8.2rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
+.hero-copy .hero-sub {
+  max-width: 600px;
+  margin-top: 24px;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  text-shadow: none;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: #fff;
+  backdrop-filter: none;
+}
+
+.btn-ghost:hover {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+
+.hero-inner .hero-pills {
+  gap: 0 18px;
+  margin-top: 36px;
+}
+
+.hero-inner .hero-pills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  backdrop-filter: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-inner .hero-pills span:not(:first-child)::before {
+  content: "//";
+  color: var(--red);
+  font-weight: 800;
+}
+
+.hero-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.hero-arrow:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+  transform: none;
+}
+
+.hero-dot {
+  height: 3px;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hero-dot-fill {
+  border-radius: 0;
+  background: var(--red);
+}
+
+.hero-scroll {
+  border-radius: 0;
+  width: 1px;
+  height: 56px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hero-scroll span {
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 20px;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* --- Ticker: solid red band --- */
+.ticker {
+  padding: 14px 0;
+  border: 0;
+  background: var(--red);
+  mask-image: none;
+}
+
+.ticker-track {
+  gap: 56px;
+  animation-duration: 60s;
+}
+
+.ticker-item {
+  gap: 16px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.ticker-item .stripes {
+  background: linear-gradient(110deg, #fff 0 44%, transparent 44% 56%, rgba(255, 255, 255, 0.55) 56% 100%);
+}
+
+@keyframes tickerScroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Trust strip --- */
+.trust-strip {
+  padding: 0;
+  border: 0;
+}
+
+.trust-grid {
+  gap: 0;
+  border-left: 1px solid var(--line);
+}
+
+.trust-item {
+  padding: 34px 26px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  transition: background 200ms ease;
+}
+
+.trust-item:hover {
+  transform: none;
+  box-shadow: none;
+  background: #fafbfc;
+}
+
+.trust-item svg {
+  color: var(--red);
+  width: 24px;
+  height: 24px;
+}
+
+.trust-item h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* --- Services --- */
+.services {
+  background: #fff;
+}
+
+.service-grid {
+  counter-reset: service;
+  gap: 14px;
+}
+
+.service-card {
+  counter-increment: service;
+  min-height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: none;
+  transition: border-color 220ms ease;
+}
+
+.service-card::after {
+  height: 3px;
+  background: var(--red);
+}
+
+.service-card:hover {
+  transform: none;
+  border-color: var(--ink);
+  box-shadow: none;
+}
+
+.service-image {
+  height: 210px;
+}
+
+.service-image img {
+  transition: transform 700ms var(--ease);
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+.service-body {
+  min-height: auto;
+  grid-template-rows: auto auto 1fr auto;
+  padding: 22px 22px 24px;
+}
+
+.service-icon {
+  display: none;
+}
+
+.service-card h3 {
+  position: relative;
+  margin: 0 0 8px;
+  padding-top: 8px;
+  font-size: 1.5rem;
+}
+
+.service-card h3::before {
+  content: "0" counter(service);
+  position: absolute;
+  right: 0;
+  top: 8px;
+  color: var(--line-strong);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+}
+
+.service-card p {
+  font-size: 0.98rem;
+}
+
+.service-card a {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 2px;
+}
+
+.service-card a::after {
+  content: none;
+}
+
+.service-flow {
+  margin-top: 56px;
+  padding: 0;
+  gap: 0;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: none;
+}
+
+.flow-step {
+  padding: 28px 26px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+}
+
+.flow-step:last-child {
+  border-right: 0;
+}
+
+.flow-step::after {
+  content: none;
+}
+
+.flow-step span {
+  display: block;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: var(--red);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.flow-step h3 {
+  margin: 10px 0 6px;
+}
+
+/* --- Feature sections --- */
+.auto-hub,
+.accident-highlight,
+.about,
+.used-cars,
+.carwash-section,
+.team,
+.gallery,
+.contact,
+.partners {
+  background: #fff;
+}
+
+.accident-highlight,
+.team {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.feature-image,
+.about-image {
+  position: relative;
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+.feature-image::after,
+.about-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 38%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--blue) 0 50%, var(--red) 50% 100%);
+}
+
+.feature-image img,
+.about-image img {
+  height: 560px;
+  transition: none;
+}
+
+.feature-image:hover img,
+.about-image:hover img {
+  transform: none;
+}
+
+.check-list,
+.why-list,
+.hub-list {
+  gap: 0;
+  margin: 28px 0 30px;
+  border-top: 1px solid var(--line);
+}
+
+.check-list li,
+.why-list li,
+.hub-list li {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hub-list {
+  grid-template-columns: 1fr;
+}
+
+.check-list svg,
+.why-list svg,
+.hub-list svg {
+  color: var(--red);
+}
+
+/* --- Stats --- */
+.stats-grid {
+  margin-top: 72px;
+  gap: 0;
+  border: 0;
+  border-top: 2px solid var(--ink);
+  border-radius: 0;
+  overflow: visible;
+}
+
+.stat {
+  padding: 26px 24px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.stat::before {
+  content: none;
+}
+
+.stat strong {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: clamp(3rem, 5vw, 4.6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.stat span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* --- Carwash --- */
+.carwash-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  gap: 54px;
+}
+
+.carwash-image {
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+.carwash-image svg {
+  display: none;
+}
+
+.carwash-image img {
+  height: 480px;
+}
+
+/* --- Team --- */
+.team-card {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  transition: none;
+}
+
+.team-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.team-card img {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  filter: grayscale(1);
+  transition: filter 400ms ease;
+}
+
+.team-card:hover img {
+  transform: none;
+  filter: none;
+}
+
+.team-card div {
+  padding: 18px 0 0;
+}
+
+.team-card h3 {
+  margin-bottom: 4px;
+}
+
+.team-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.team-card p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+/* --- Partners --- */
+.partners {
+  padding: 70px 0 84px;
+  border-top: 1px solid var(--line);
+}
+
+.partner-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.partner-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: tickerScroll 46s linear infinite;
+}
+
+.partner-marquee:hover .partner-track {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  width: 220px;
+  min-height: 110px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: filter 300ms ease, opacity 300ms ease;
+}
+
+.partner-logo:hover {
+  filter: none;
+  opacity: 1;
+}
+
+/* --- Gallery --- */
+.gallery-grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 250px;
+  gap: 10px;
+}
+
+.gallery-item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #111418;
+}
+
+.gallery-item.is-feature {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 800ms var(--ease);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 36px 16px 14px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(0deg, rgba(8, 10, 14, 0.85), transparent);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.gallery-item:hover figcaption,
+.gallery-item.is-feature figcaption {
+  opacity: 1;
+}
+
+/* --- Contact --- */
+.contact {
+  border-top: 1px solid var(--line);
+}
+
+.contact-card {
+  position: relative;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+.contact-card h3 {
+  font-size: 1.7rem;
+}
+
+.contact-card a {
+  font-weight: 500;
+}
+
+.contact-card a:hover {
+  color: var(--blue);
+}
+
+.location-card {
+  display: none;
+}
+
+/* --- Footer --- */
+.footer {
+  position: relative;
+  background: #111418;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue) 0 50%, var(--red) 50% 100%);
+}
+
+.footer h2 {
+  font-size: 1.8rem;
+}
+
+.footer h3 {
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+}
+
+.footer nav a:hover {
+  color: #fff;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1080px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 210px;
+  }
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .flow-step:nth-child(2) {
+    border-right: 0;
+  }
+  .flow-step:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 22px;
+  }
+  .feature-image img,
+  .about-image img,
+  .carwash-image img {
+    height: 420px;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 72px 0;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 170px;
+  }
+  .gallery-item.is-feature {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-flow {
+    grid-template-columns: 1fr;
+  }
+  .flow-step {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .flow-step:last-child {
+    border-bottom: 0;
+  }
+  .hero-copy h1 {
+    font-size: clamp(2.8rem, 13vw, 4.4rem);
+  }
+  .hero-controls {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    transform: none;
+    gap: 10px;
+  }
+  .hero-dots {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 6px;
+  }
+  .hero-dot,
+  .hero-dot.is-active {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+  }
+  .hero-arrow {
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+  }
+  .hero-inner .hero-pills span:not(:first-child)::before {
+    content: none;
+  }
+  .hero-inner .hero-pills {
+    gap: 6px 14px;
+  }
+  .ticker-item {
+    font-size: 0.9rem;
+  }
+  .partner-logo {
+    width: 170px;
+    min-height: 90px;
+  }
+  .feature-image img,
+  .about-image img,
+  .carwash-image img {
+    height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track,
+  .partner-track {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

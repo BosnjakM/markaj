@@ -7,3 +7,9 @@ vite.config.d.ts
 .env.local
 .DS_Store
 Thumbs.db
+
+# Raw drone footage (large, kept local)
+fotos/
+
+# Claude desktop launch config
+.claude/
