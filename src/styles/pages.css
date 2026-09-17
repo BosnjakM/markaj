@@ -1,6 +1,44 @@
 /* ============================================================
    MULTI-PAGE LAYOUT (mirrors garage-markaj.ch structure)
    ============================================================ */
+
+/* Navbar spans the full width: logo flush left (same line as the hero copy),
+   navigation flush right. Logo is larger but the bar keeps its 84px height. */
+.navbar {
+  width: 100%;
+  max-width: none;
+  padding: 0 clamp(20px, 4vw, 64px) 0 clamp(20px, 3vw, 48px);
+}
+
+.brand-logo {
+  height: 68px;
+}
+
+/* Contact bar flush right, on the same edge as the navigation */
+.topbar {
+  justify-content: flex-end;
+  padding: 8px clamp(20px, 4vw, 64px);
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px 16px;
+    padding: 7px 16px;
+    font-size: 0.82rem;
+  }
+  .navbar {
+    width: 100%;
+    padding: 0 16px 0 20px;
+  }
+  .brand-logo {
+    width: min(250px, calc(100vw - 110px));
+    height: auto;
+  }
+}
 .nav-links a.active:not(.nav-cta) {
   color: var(--red);
 }
